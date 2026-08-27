@@ -17,6 +17,7 @@
     clipboard = "bidirectional";
     draganddrop = "bidirectional";
     vram = 128;
+    natpf1 = "guestssh,tcp,,2222,,22";
   };
 
   # Networking
