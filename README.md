@@ -18,6 +18,7 @@ The resulting `.ova` appliance is written to `result/` (as `result/nix-support/h
 
 - User: `bodybytes` / password: `bodybytes` (change after first login)
 - SSH and the KDE desktop session use the same account.
+- An authorized SSH public key for `bodybytes` is baked in via `nix/configuration.nix` (`users.users.bodybytes.openssh.authorizedKeys.keys`); the matching private key is kept outside this repo.
 
 ## Notes
 
