@@ -21,6 +21,8 @@
     file
     # Hardware tooling
     segger-jlink
+    usbutils
+    util-linux
     # GPU diagnostics
     mesa-demos
     clinfo
