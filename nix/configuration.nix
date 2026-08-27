@@ -1,0 +1,80 @@
+{ modulesPath, config, pkgs, lib, ... }:
+{
+  imports = [
+    (modulesPath + "/virtualisation/virtualbox-image.nix")
+    ./packages.nix
+    ./services.nix
+    ./apps/vscode.nix
+    ./apps/zsh.nix
+  ];
+
+  # VirtualBox appliance
+
+  virtualbox.vmName = "Bodybytes VM";
+  virtualbox.memorySize = 8192;
+  virtualbox.params = {
+    cpus = 4;
+    clipboard = "bidirectional";
+    draganddrop = "bidirectional";
+    vram = 128;
+  };
+
+  # Networking
+
+  networking.hostName = "bodybytes-vm";
+
+  # Localization
+
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LANGUAGE = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
+  console = {
+    keyMap = "de";
+  };
+
+  # Users
+
+  users.users.bodybytes = {
+    uid = 1000;
+    initialPassword = "bodybytes";
+    isNormalUser = true;
+    description = "Bodybytes";
+    shell = pkgs.zsh;
+    home = "/home/bodybytes";
+    extraGroups = [
+      "wheel"
+    ];
+  };
+
+  # Security
+
+  security.polkit = {
+    enable = true;
+  };
+
+  # Misc
+
+  nix.settings.download-buffer-size = 524288000;
+
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    builders-use-substitutes = true
+  '';
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It's perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "26.05"; # Did you read the comment? yes
+  home-manager.users.bodybytes.home.stateVersion = "26.05";
+}
