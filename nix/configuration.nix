@@ -18,6 +18,9 @@
     draganddrop = "bidirectional";
     vram = 128;
     natpf1 = "guestssh,tcp,,2222,,22";
+    usb = "off";
+    usbehci = "off";
+    usbxhci = "on";
   };
 
   # Networking
