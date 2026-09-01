@@ -29,14 +29,14 @@
 
   # Localization
 
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LANGUAGE = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
   };
   console = {
-    keyMap = "de";
+    keyMap = "us";
   };
 
   # Users

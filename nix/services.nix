@@ -5,7 +5,7 @@
 
   services.xserver = {
     enable = true;
-    xkb.layout = "de";
+    xkb.layout = "us";
   };
 
   services.desktopManager.plasma6.enable = true;
